@@ -1,0 +1,37 @@
+extends ../../layouts/main_layout
+
+block modules 
+  script(async src="/javascripts/modules/gamers/gamers.js" type="module") 
+
+block content
+    if gamers.length == 0
+      div(class="flex-center flex-dir-col h-100")
+        img(class="notify" src="/images/empty.svg", alt="")
+        h2(class="notify-text" class="text-center") No Suggested Matches Found For You
+    else
+    div(class="grid")
+        for gamer in gamers
+                div(class="common-card user-card" data-target-user-id=gamer.id)
+                    a(href="/gamers/"+gamer.username)
+                        div(class='card-top')
+                            img(src="/images/avatars/"+ gamer.id +".jpg", alt="")
+                            p= gamer.username
+                    div(class='card-body flex-center')
+                        div(class="card-body-item flex-center")
+                            i(class='fas fa-star')
+                            p= gamer.rating
+                        div(class="card-body-item flex-center")
+                            i(class='fas fa-hourglass')
+                            p= gamer.gamingExperience
+                            p(style="font-size:10px")= "yr"
+                            //- p= "year"
+                        div(class="card-body-item flex-center")
+                            i(class='fas fa-certificate')
+                            p= gamer.gamerMatchedRating
+                    div(class='card-actions flex-space-between')
+                        div(class="action-item action-item-custom flex-center like" id="like")
+                            i(class='fas fa-check')
+                            //- p= "like"
+                        div(class="action-item action-item-custom flex-center dislike" id="dislike")
+                            i(class='fas fa-times')
+                            //- p= "dislike"

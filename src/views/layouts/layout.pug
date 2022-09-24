@@ -1,0 +1,44 @@
+doctype html
+html 
+    head 
+        title= title 
+
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css")
+        link(rel='stylesheet', href='/stylesheets/app.css')
+        
+        block modules
+
+        script(src="/javascripts/app.js" type="module" defer) 
+
+    body 
+        header
+            nav(class="flex-space-between") 
+                div(class="logo flex-center")
+                    img(class="logo-avatar" src="/images/l1.png", alt="")
+                    p G4Met
+                div(class="links flex-center")
+                    if !userId
+                        a(href="/signin")
+                            li(class="link") Log in
+                        a(href="/signup")
+                            li(class="link") Join
+                    else
+                        a(href="/gamers/dashboard")
+                            li(class="link") Gamer Space
+                //- a(href="home")
+                //-   li(class="link flex-center")
+                //-     i(class="fas fa-home")
+                //- a(href="home")
+                //-   li(class="link flex-center")
+                //-     i(class="fas fa-user")
+                //- a(href="home")
+                //-   li(class="link flex-center")
+                //-     i(class="fas fa-users")
+            
+            block header
+        
+        //- main(class="wrapper") 
+        //-     block content
+
+        footer
+            p copyright 2021-2022

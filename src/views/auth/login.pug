@@ -1,0 +1,22 @@
+extends ../layouts/layout
+
+block modules 
+  script(async src="/javascripts/modules/accounts/login.js" type="module") 
+
+block header
+    div(class="form-area flex-space-around wrapper")
+      div(class="form-wrapper flex-center flex-dir-col")
+        p(class="form-title") Sign In Now
+        form(class="form login-form")
+          div(class="block")
+            h5(for="username") Username
+            input(type="text" id="username" name="username" placeholder="username")
+          //- div(class="block")
+          //-   h5(for="email") Email
+          //-   input(type="email" id="email" name="email" placeholder="email")
+          div(class="block")
+            h5(for="pwd") Password
+            input(type="password" id="pwd" name="pwd" placeholder="password")
+          div(class="block text-center")
+            input(class="btn sign-btn" id="login" type="button" value="Log in" disabled)
+      

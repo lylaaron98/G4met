@@ -1,0 +1,47 @@
+extends ../../layouts/main_layout
+
+block modules 
+//-   script(async src="/javascripts/modules/" type="module") 
+
+block content
+    div(class="profile-wrapper flex")
+        div(class="profile-left-side flex flex-dir-col")
+            section(class="gamer-info-sec")
+                img(class="gamer-avatar" src="/images/avatars/"+ gamer.id +".jpg", alt="")
+                p(class="gamer-name")= gamer.username
+                div(class="gamer-rating flex-center") 
+                    i(class="fas fa-star icon")
+                    p= gamer.rating
+                div(class="gamer-matches flex-center")
+                    i(class="fas fa-users icon")
+                    p= numberOfMatches +" Matches"
+            div(class="sep")
+            h3(class="sec-title") General Informations
+            section(class="general-info-sec")
+                div(class="inner-sec")
+                    h3(class="inner-sec-title") Gaming Experience :
+                    div(class="sec-item")= "+"+gamer.gamingExperience +" years"
+                div(class="inner-sec")
+                    h3(class="inner-sec-title") Gamer Matches Rating :
+                    div(class="sec-item")= gamer.rating
+            h3(class="sec-title") About The Gaming Journey
+            section(class="gaming-info-sec")
+                div(class="inner-sec")
+                    h3(class="inner-sec-title") Games :
+                    div(class="items-list")
+                        for game in gamesData
+                            div(class="sec-item")= game.name
+                div(class="inner-sec")
+                    h3(class="inner-sec-title") Roles :
+                    div(class="items-list")
+                        for game in gamesData
+                            for role in game.roles
+                                div(class="sec-item")= role
+        div(class="profile-right-side")
+            div(class="tabs-titles flex")
+                h3(class="tab-title") My Games
+            div(class="tab-content grid")
+                for game in gamesData 
+                    div(class="card basic-game-card")
+                        img(src="/images/games/"+ game.name +".jpg", alt="")
+            

@@ -1,0 +1,22 @@
+extends ../../layouts/main_layout
+
+block modules 
+  script(async src="/javascripts/modules/gamers/requests.js" type="module") 
+
+block content
+    if requests.length == 0
+      div(class="flex-center flex-dir-col h-100")
+        img(class="notify" src="/images/empty.svg", alt="")
+        h2(class="notify-text" class="text-center") No Sent Requests Yet, Try To Add New Gamers Matches
+    else
+    div(class="grid")
+        for request in requests
+                div(class="common-card request-card" data-request-id=request.id)
+                    a(href="/gamers/"+request.receiverName)
+                        div(class='card-top')
+                            img(src="/images/avatars/"+ request.receiverId +".jpg", alt="")
+                            p= request.receiverName
+                    div(class='card-actions flex-center')
+                        div(class="action-item action-item-btn flex-center cancel" id="cancel-sent-request")
+                            //- i(class='fas fa-trash')
+                            p= "Cancel"

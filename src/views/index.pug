@@ -1,0 +1,19 @@
+extends layouts/layout
+
+block header 
+    div(class="header-area flex-space-around wrapper")
+      div(class="img-area")
+        img(src="/images/l3.png", alt="")
+      div(class="title-area flex flex-dir-col")
+        if !userId
+          p Join G4Met and enhance your gaming experience !
+        else
+          p Welcome to G4Met let's start a new experience !
+        
+        if !userId
+          a(class="btn btn-link" href="/signup") Sign Up 
+        else
+          a(class="btn btn-link" href="/gamers/dashboard") Let's Start  
+
+//- block content
+//-   p Welcome to #{title}

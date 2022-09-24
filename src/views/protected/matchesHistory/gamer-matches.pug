@@ -1,0 +1,32 @@
+extends ../../layouts/main_layout
+
+block modules 
+  script(async src="/javascripts/modules/matchesHistory/matches.js" type="module") 
+
+block content
+    if matches.length == 0
+      div(class="flex-center flex-dir-col h-100")
+        img(class="notify" src="/images/empty.svg", alt="")
+        h2(class="notify-text" class="text-center") No Matches Gamers Found For You, Add Some Now !
+    else
+    div(class="chat-panel hide")
+        div(class="top-block flex-center")
+            img(class="chat-avatar" src="", alt="" id="reciever-avatar")
+            p(class="username-block")
+        div(class="messages-block")
+            div(class="flex-center") No messages yet
+        div(class="bottom-block flex-center")
+            input(type="text" placeholder="write your message here..." class="message-input")
+            input(type="button" class="send-msg-btn" value="send")
+    div(class="grid")
+        for match in matches
+                div(class="common-card match-card" data-match-id=match.id data-matched-gamer-name=match.secondGamerName data-matched-gamer-id=match.secondGamerId data-current-gamer-id=match.firstGamerId data-current-gamer-name=match.firstGamerName)
+                    a(href="/gamers/"+match.secondGamerName)
+                        div(class='card-top')
+                            img(src="/images/avatars/"+ match.secondGamerId +".jpg", alt="")
+                            p= match.secondGamerName
+                    div(class='card-actions flex-center')
+                        div(class="action-item action-item-user flex-center chat" id="chat")
+                            i(class="fas fa-comment-alt")
+                        div(class="action-item action-item-user flex-center unmatch" id="unmatch")
+                            i(class="fas fa-trash")

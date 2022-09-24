@@ -1,0 +1,69 @@
+doctype html
+html 
+    head 
+        title= title 
+
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css")
+        link(rel='stylesheet', href='/stylesheets/app.css')
+        
+        block modules
+
+        script(src="/javascripts/app.js" type="module" defer) 
+
+    body 
+        header(class="dashboard-header") 
+            nav(class="dashboard-navbar flex-space-between")
+                div(class="navbar-left-side flex-center")
+                    a(href="/" class="dashboard-logo-link") 
+                        div(class="navbar-logo flex-center")
+                            img(src="/images/l1.png", alt="")
+                            p(class="logo-title") G4Met
+                div(class="navbar-right-side flex-center")
+                    a(class="navbar-link" href="/gamers/dashboard")
+                        li(class="align-center")
+                            i(class="fas fa-home navbar-icon")
+                            p Home
+                    a(class="navbar-link")
+                        li(class="align-center")
+                            i(class="fas fa-inbox navbar-icon")
+                            p Inbox
+                    a(class="navbar-link" href="/logout")
+                        li(class="align-center")
+                            i(class="fas fa-user-lock navbar-icon")
+                            p Log Out
+
+        
+        main(class="wrapper")
+            
+            div(class="dashboard-sidebar flex flex-dir-col")
+                div(class="items-sec")
+                    div(class="sidebar-item-title")= username
+
+                    div(class="sidebar-item") 
+                        a(class="sidebar-link align-center" href="/gamers/profile")
+                            i(class="fas fa-user dashboard-icon")
+                            p My Profile
+
+                div(class="items-sec")
+                    div(class="sidebar-item-title") Discover
+
+                    div(class="sidebar-item") 
+                        a(class="sidebar-link align-center" href="/gamers/matches/suggestions") 
+                            i(class="fas fa-share-alt dashboard-icon")
+                            p Suggested Matches
+                    div(class="sidebar-item") 
+                        a(class="sidebar-link align-center" href="/gamers/matches/my_matches")
+                            i(class="fas fa-gamepad dashboard-icon")
+                            p My Matches
+                            p(class="new-notify")= /**numberOfMatches + **/" New"
+                    div(class="sidebar-item") 
+                        a(class="sidebar-link align-center" href="/gamers/requests/friends_pending")
+                            i(class="fas fa-user-check dashboard-icon")
+                            p New Requests
+                    div(class="sidebar-item") 
+                        a(class="sidebar-link align-center" href="/gamers/requests/sent")
+                            i(class="fas fa-tag dashboard-icon")
+                            p Sent Requests
+
+            div(class="dashboard-main-content")
+                block content

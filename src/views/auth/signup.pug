@@ -1,0 +1,37 @@
+extends ../layouts/layout
+
+block modules 
+  script(async src="/javascripts/modules/accounts/accounts.js" type="module") 
+
+block header 
+    div(class="form-area flex-space-around wrapper")
+      div(class="form-wrapper flex-center flex-dir-col")
+        p(class="form-title") New User Sign Up
+        form(class="form signup-form")
+          div(class="account-info-side")
+            div(class="top-side flex")
+              div(class="block")
+                h5(for="username") Username
+                input(type="text" id="username" name="username" placeholder="username" required)
+              div(class="block")
+                h5(for="email") Email
+                input(type="email" id="email" name="email" placeholder="email" required)
+            div(class="bottom-side flex")
+              div(class="block")
+                h5(for="pwd") Password
+                input(type="password" id="pwd" name="pwd" placeholder="password" required)
+              div(class="block")
+                h5(for="confirmed_pwd") Confirm Your Password
+                input(type="password" id="confirmed_pwd" name="confirmed_pwd" placeholder="confirm your password" required)
+          div(class="gamer-info-side")
+            div(class="block")
+              h5(for="game") Game
+              div(class="selected-games align-center")
+              select(id="gamesList" name="games") 
+                option(value="")
+            div(class="block gameRolesWrapper hide")
+              h5(for="roles") Roles
+              div(class="gamer-roles flex")
+          div(class="block text-center")
+            input(class="btn sign-btn" id="signup" type="button" value="Continue" disabled)
+      
